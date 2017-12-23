@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="io.bluephoenix.imagewall.ui.MainActivity">
+
+    <io.bluephoenix.imagewall.ui.views.CustomBtn
+        android:id="@+id/loginBtn"
+        android:layout_width="114dp"
+        android:layout_height="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        custom:height="64dp"
+        custom:backgroundColor="@color/colorPrimary"
+        custom:text="@string/login_button"
+        custom:textColor="@color/white"
+        custom:textSize="12sp"
+        custom:padding="6dp"
+        custom:shadowColor="@color/colorPrimaryShadow"
+        custom:shadowRadiusBlur="1dp"
+        custom:shadowRadiusBlurSelected="3dp"
+        custom:shadowOffset="2dp">
+    </io.bluephoenix.imagewall.ui.views.CustomBtn>
+
+    <io.bluephoenix.imagewall.ui.views.CustomBtnPlus
+        android:id="@+id/googleLoginBtn"
+        android:layout_width="114dp"
+        android:layout_height="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.683"
+        custom:backgroundColor="@color/colorPrimary"
+        custom:height="64dp"
+        custom:leftBackground="@color/colorPrimaryDark"
+        custom:leftLetter="G"
+        custom:padding="6dp"
+        custom:shadowColor="@color/colorPrimaryShadow"
+        custom:shadowOffset="2dp"
+        custom:shadowRadiusBlur="1dp"
+        custom:shadowRadiusBlurSelected="3dp"
+        custom:text="@string/login_button"
+        custom:textColor="@color/white"
+        custom:textSize="12sp">
+    </io.bluephoenix.imagewall.ui.views.CustomBtnPlus>
+
+</android.support.constraint.ConstraintLayout>

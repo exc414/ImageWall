@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AARRGGBB = AA (Alpha) RR (Red) GG (Green) BB (Blue)-->
+    <color name="colorPrimary">#4680ff</color>
+    <color name="colorPrimaryLight">#d9e9fb</color>
+    <color name="colorPrimaryDark">#3f74e7</color>
+    <color name="colorAccent">#1a1d24</color>
+
+    <color name="ghostWhite">#f7f8fb</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorPrimaryShadow">#704786ff</color>
+
+</resources>

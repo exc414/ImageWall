@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Parent Style -->
+    <declare-styleable name="CustomBtn">
+
+        <attr name="height" format="dimension"/>
+        <attr name="backgroundColor" format="string" />
+
+        <attr name="text" format="string" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+
+        <attr name="padding" format="dimension" />
+
+        <attr name="shadowColor" format="color" />
+        <attr name="shadowRadiusBlur" format="dimension" />
+        <attr name="shadowRadiusBlurSelected" format="dimension" />
+        <attr name="shadowOffset" format="dimension" />
+
+    </declare-styleable>
+
+    <declare-styleable name="CustomBtnPlus" parent="CustomBtn">
+
+        <attr name="leftBackground" format="color" />
+        <attr name="leftLetter" format="string" />
+
+    </declare-styleable>
+
+</resources>

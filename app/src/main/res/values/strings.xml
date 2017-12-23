@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ImageWall</string>
+
+    <!-- Login/Register Screen -->
+
+    <!-- Buttons -->
+    <string name="login_button">LOGIN</string>
+    <string name="login_button_google">LOGIN WITH GOOGLE</string>
+    <string name="register_button">REGISTER</string>
+
+</resources>
