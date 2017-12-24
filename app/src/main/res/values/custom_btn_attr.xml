@@ -1,29 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <attr name="width" format="dimension" />
+    <attr name="height" format="dimension"/>
+    <attr name="backgroundColor" format="string" />
+
+    <attr name="text" format="string" />
+    <attr name="textColor" format="color" />
+    <attr name="textSize" format="dimension" />
+
+    <attr name="padding" format="dimension" />
+
+    <attr name="shadowColor" format="color" />
+    <attr name="shadowRadiusBlur" format="dimension" />
+    <attr name="shadowRadiusBlurSelected" format="dimension" />
+    <attr name="shadowOffset" format="dimension" />
+
     <!-- Parent Style -->
     <declare-styleable name="CustomBtn">
 
-        <attr name="height" format="dimension"/>
-        <attr name="backgroundColor" format="string" />
+        <attr name="width" />
+        <attr name="height" />
+        <attr name="backgroundColor" />
 
-        <attr name="text" format="string" />
-        <attr name="textColor" format="color" />
-        <attr name="textSize" format="dimension" />
+        <attr name="text"  />
+        <attr name="textColor"  />
+        <attr name="textSize" />
 
-        <attr name="padding" format="dimension" />
+        <attr name="padding" />
 
-        <attr name="shadowColor" format="color" />
-        <attr name="shadowRadiusBlur" format="dimension" />
-        <attr name="shadowRadiusBlurSelected" format="dimension" />
-        <attr name="shadowOffset" format="dimension" />
+        <attr name="shadowColor" />
+        <attr name="shadowRadiusBlur" />
+        <attr name="shadowRadiusBlurSelected"  />
+        <attr name="shadowOffset"  />
 
     </declare-styleable>
 
-    <declare-styleable name="CustomBtnPlus" parent="CustomBtn">
+    <declare-styleable name="CustomBtnPlus">
+
+        <attr name="width" />
+        <attr name="height" />
+        <attr name="backgroundColor" />
+
+        <attr name="text"  />
+        <attr name="textColor"  />
+        <attr name="textSize" />
+
+        <attr name="padding" />
+
+        <attr name="shadowColor" />
+        <attr name="shadowRadiusBlur" />
+        <attr name="shadowRadiusBlurSelected"  />
+        <attr name="shadowOffset"  />
 
         <attr name="leftBackground" format="color" />
-        <attr name="leftLetter" format="string" />
+        <attr name="textLeft" format="string" />
+        <attr name="textLeftSize" format="dimension" />
 
     </declare-styleable>
 
