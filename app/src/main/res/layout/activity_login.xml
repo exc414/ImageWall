@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="io.bluephoenix.imagewall.features.login.LoginActivity"
+    tools:ignore="MissingPrefix">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:text="@string/login_activity_name"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/white" >
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Prevents the edit text from having focus when the activity starts.
+         android:focusableInTouchMode="true" on the parent layout. -->
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:id="@+id/constraintLoginLayout"
+            tools:context="io.bluephoenix.imagewall.features.login.LoginActivity">
+
+            <EditText
+                android:id="@+id/editTextLoginEmail"
+                android:layout_width="@dimen/width_edit_box"
+                android:layout_height="@dimen/height_edit_box"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/edit_text_selector"
+                android:drawableLeft="@drawable/ic_person_grey_200_18dp"
+                android:drawablePadding="16dp"
+                android:drawableStart="@drawable/ic_person_grey_200_18dp"
+                android:ems="10"
+                android:hint="@string/edit_text_email_and_username_hint"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="@color/editTextText"
+                android:textColorHint="@color/editTextHint"
+                android:textSize="14sp"
+                android:theme="@style/EditTextOverride"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/txtLoginEmailError"
+                android:layout_width="@dimen/width_edit_box"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:textAlignment="center"
+                android:textColor="@color/error"
+                android:textSize="12sp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextLoginEmail"/>
+
+            <EditText
+                android:id="@+id/editTextLoginPassword"
+                android:layout_width="@dimen/width_edit_box"
+                android:layout_height="@dimen/height_edit_box"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/edit_text_selector"
+                android:drawableLeft="@drawable/ic_vpn_key_grey_200_18dp"
+                android:drawablePadding="16dp"
+                android:drawableStart="@drawable/ic_vpn_key_grey_200_18dp"
+                android:ems="10"
+                android:hint="@string/edit_text_password_hint"
+                android:inputType="textPassword"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="@color/editTextText"
+                android:textColorHint="@color/editTextHint"
+                android:textSize="14sp"
+                android:theme="@style/EditTextOverride"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtLoginEmailError"/>
+
+            <TextView
+                android:id="@+id/txtLoginPasswordError"
+                android:layout_width="@dimen/width_edit_box"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:textAlignment="center"
+                android:textColor="@color/error"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextLoginPassword"/>
+
+            <!-- Tried using a generic view and it would crash with a null pointer.
+                 Did a new -->
+            <ImageView
+                android:id="@+id/spacer"
+                android:layout_width="6dp"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/content_description_login_space"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextLoginPassword"
+                app:layout_constraintStart_toEndOf="@+id/editTextLoginPassword"
+                app:layout_constraintTop_toTopOf="@+id/editTextLoginPassword"
+                custom:srcCompat="@color/white"/>
+
+            <Button
+                android:id="@+id/forgotPasswordBtn"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/height_button"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="4dp"
+                android:paddingEnd="4dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingStart="4dp"
+                android:text="@string/forgot_password_button"
+                android:textAllCaps="false"
+                android:textColor="@color/editTextHint"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/loginBtn"
+                app:layout_constraintStart_toStartOf="@+id/editTextLoginPassword"
+                app:layout_constraintTop_toBottomOf="@+id/txtLoginPasswordError"/>
+
+            <ImageView
+                android:id="@+id/dividerFirst"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/content_description_divider"
+                android:layerType="software"
+                app:layout_constraintEnd_toStartOf="@+id/txtOr"
+                app:layout_constraintStart_toStartOf="@+id/forgotPasswordBtn"
+                app:layout_constraintTop_toBottomOf="@+id/loginBtn"
+                app:srcCompat="@drawable/divider"/>
+
+
+            <TextView
+                android:id="@+id/txtOr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/divider_text_or"
+                android:textColor="@color/editTextHint"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginBtn"/>
+
+            <ImageView
+                android:id="@+id/dividerSecond"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/content_description_divider"
+                android:layerType="software"
+                app:layout_constraintEnd_toEndOf="@+id/editTextLoginPassword"
+                app:layout_constraintStart_toEndOf="@+id/txtOr"
+                app:layout_constraintTop_toBottomOf="@+id/loginBtn"
+                app:srcCompat="@drawable/divider"/>
+
+            <!-- The custom width attr in these views refers to the min width. The view
+                 will not be less than 114 dp. -->
+            <io.bluephoenix.imagewall.views.CustomBtn
+                android:id="@+id/loginBtn"
+                android:layout_width="126dp"
+                android:layout_height="74dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/spacer"
+                app:layout_constraintTop_toBottomOf="@+id/txtLoginPasswordError"
+                custom:backgroundColor="@color/colorPrimary"
+                custom:height="74dp"
+                custom:padding="6dp"
+                custom:shadowColor="@color/colorPrimaryShadow"
+                custom:shadowOffset="2dp"
+                custom:shadowRadiusBlur="1dp"
+                custom:shadowRadiusBlurSelected="3dp"
+                custom:text="@string/login_button"
+                custom:textColor="@color/white"
+                custom:textSize="11sp"
+                custom:width="126dp"
+                tools:ignore="SmallSp">
+            </io.bluephoenix.imagewall.views.CustomBtn>
+
+            <io.bluephoenix.imagewall.views.CustomBtnPlus
+                android:id="@+id/googleLoginBtn"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="34dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtOr"
+                custom:backgroundColor="@color/colorPrimary"
+                custom:width="@dimen/width_button"
+                custom:height="@dimen/height_button"
+                custom:leftBackground="@color/colorPrimaryDark"
+                custom:padding="6dp"
+                custom:shadowColor="@color/colorPrimaryShadow"
+                custom:shadowOffset="2dp"
+                custom:shadowRadiusBlur="1dp"
+                custom:shadowRadiusBlurSelected="3dp"
+                custom:text="@string/login_button_google"
+                custom:textColor="@color/white"
+                custom:textLeft="@string/login_button_google_letter"
+                custom:textLeftSize="16sp"
+                custom:textSize="11sp"
+                tools:ignore="SmallSp">
+            </io.bluephoenix.imagewall.views.CustomBtnPlus>
+
+            <io.bluephoenix.imagewall.views.CustomBtnPlus
+                android:id="@+id/facebookLoginBtn"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/googleLoginBtn"
+                custom:backgroundColor="@color/colorPrimary"
+                custom:width="@dimen/width_button"
+                custom:height="@dimen/height_button"
+                custom:leftBackground="@color/colorPrimaryDark"
+                custom:padding="6dp"
+                custom:shadowColor="@color/colorPrimaryShadow"
+                custom:shadowOffset="2dp"
+                custom:shadowRadiusBlur="1dp"
+                custom:shadowRadiusBlurSelected="3dp"
+                custom:text="@string/login_button_facebook"
+                custom:textColor="@color/white"
+                custom:textLeft="@string/login_button_facebook_letter"
+                custom:textLeftSize="16sp"
+                custom:textSize="11sp"
+                tools:ignore="SmallSp">
+            </io.bluephoenix.imagewall.views.CustomBtnPlus>
+
+            <Button
+                android:id="@+id/createAccountBtn"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="14dp"
+                android:minHeight="24dp"
+                android:padding="4dp"
+                android:text="@string/create_account_button"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txtCreateAccount"
+                app:layout_constraintTop_toBottomOf="@+id/facebookLoginBtn"/>
+
+            <TextView
+                android:id="@+id/txtCreateAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/create_account_button_description"
+                android:textColor="@color/editTextHint"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/createAccountBtn"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/facebookLoginBtn"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

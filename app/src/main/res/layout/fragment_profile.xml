@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/profilePhoto"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/content_description_profile_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_add_photo_drawer"/>
+
+        <TextView
+            android:id="@+id/profilePostNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="@string/profile_post_num"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/profilePostTitle"
+            app:layout_constraintStart_toStartOf="@+id/profilePostTitle"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/profileFollowersNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="@string/profile_followers_num"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/profileFollowersTitle"
+            app:layout_constraintStart_toStartOf="@+id/profileFollowersTitle"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/profileFollowingNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="@string/profile_following_num"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/profileFollowingTitle"
+            app:layout_constraintStart_toStartOf="@+id/profileFollowingTitle"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/profilePostTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/profile_post_title"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toStartOf="@+id/profileFollowersTitle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profilePhoto"
+            app:layout_constraintTop_toBottomOf="@+id/profilePostNum"/>
+
+        <TextView
+            android:id="@+id/profileFollowersTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/profile_followers_title"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toStartOf="@+id/profileFollowingTitle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profilePostTitle"
+            app:layout_constraintTop_toBottomOf="@+id/profileFollowersNum"/>
+
+        <TextView
+            android:id="@+id/profileFollowingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/profile_following_title"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profileFollowersTitle"
+            app:layout_constraintTop_toBottomOf="@+id/profileFollowingNum"
+            />
+
+        <TextView
+            android:id="@+id/profilePhotoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/profile_photo_name"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/profilePhoto"
+            app:layout_constraintStart_toStartOf="@+id/profilePhoto"
+            app:layout_constraintTop_toBottomOf="@+id/profilePhoto"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/profilePhotoTitle"/>
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

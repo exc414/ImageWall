@@ -3,7 +3,7 @@ package io.bluephoenix.imagewall.util;
 import android.animation.Animator;
 
 /**
- * @author Carlos A. Perez Zubizarreta
+ * @author Carlos A. Perez Zubizarreta Zubizarreta
  */
 public abstract class AnimListener implements Animator.AnimatorListener
 {

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="io.bluephoenix.imagewall.features.wall.WallActivity">
+
+    <item
+        android:id="@+id/addImageFromCamera"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_camera_alt_white_24dp"
+        android:title="@string/add_image_from_camera_button"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/addImageFromGallery"
+        android:orderInCategory="200"
+        android:icon="@drawable/ic_image_white_24dp"
+        android:title="@string/add_image_from_gallery_button"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_text_bg">
+
+    <ImageView
+        android:id="@+id/imgCardImage"
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/editTextHint"
+        android:contentDescription="@string/content_description_card_image"/>
+
+    <TextView
+        android:id="@+id/txtCardTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/dummy_text_title"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgFavourite"/>
+
+    <TextView
+        android:id="@+id/txtCardDesc"
+        fontPath="fonts/Lato-Regular.ttf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/dummy_text_desc"
+        android:textColor="@color/editTextText"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCardTitle"
+        tools:ignore="MissingPrefix"/>
+
+    <ImageButton
+        android:id="@+id/imgFavourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/card_button_bg"
+        android:contentDescription="@string/content_description_card_favourite_button"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCardImage"
+        app:srcCompat="@drawable/ic_favorite_border_blue_200_18dp"
+        android:layout_marginLeft="8dp"/>
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/card_button_bg"
+        android:contentDescription="@string/content_description_card_share_button"
+        android:padding="8dp"
+        app:layout_constraintStart_toEndOf="@+id/imgFavourite"
+        app:layout_constraintTop_toBottomOf="@+id/imgCardImage"
+        app:srcCompat="@drawable/ic_share_blue_200_18dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="17dp"
+        android:gravity="start"
+        android:text="@string/dummy_likes"
+        android:textAlignment="textStart"
+        android:textColor="@color/editTextText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCardImage"
+        />
+
+    <ImageButton
+        android:id="@+id/imgLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/card_button_bg"
+        android:padding="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/imgCardImage"
+        app:srcCompat="@drawable/ic_favorite_blue_200_18dp"
+        android:contentDescription="@string/content_description_card_likes_images"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="io.bluephoenix.imagewall.features.post.PostActivity"
+    tools:ignore="MissingPrefix">
+
+    <!-- ToolbarStyle overrides the hamburger button color -->
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ToolbarStyle"
+        app:titleTextColor="@color/white"
+        android:text="@string/post_activity_name"
+        tools:targetApi="lollipop">
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <!-- Prevents the edit text from having focus when the activity starts.
+             android:focusableInTouchMode="true" on the parent layout. -->
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:id="@+id/constraintPostLayout"
+            tools:context="io.bluephoenix.imagewall.features.login.LoginActivity">
+
+            <EditText
+                android:id="@+id/editTextAddTitle"
+                android:layout_width="@dimen/width_edit_box"
+                android:layout_height="@dimen/height_edit_box"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edit_text_selector"
+                android:ems="10"
+                android:hint="@string/edit_text_add_title_hint"
+                android:inputType="textShortMessage|textCapSentences"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:textColor="@color/editTextText"
+                android:textColorHint="@color/editTextHint"
+                android:textSize="14sp"
+                android:theme="@style/EditTextOverride"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgDisplayPhoto"/>
+
+            <EditText
+                android:id="@+id/editTextAddDescription"
+                android:layout_width="@dimen/width_edit_box"
+                android:layout_height="@dimen/height_edit_box_description"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edit_text_selector"
+                android:ems="10"
+                android:hint="@string/edit_text_add_description_hint"
+                android:inputType="textMultiLine|textCapSentences"
+                android:lines="4"
+                android:maxLines="10"
+                android:minLines="1"
+                android:padding="16dp"
+                android:scrollbars="vertical"
+                android:singleLine="false"
+                android:gravity="top"
+                android:textColor="@color/editTextText"
+                android:textColorHint="@color/editTextHint"
+                android:textSize="14sp"
+                android:theme="@style/EditTextOverride"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextAddTitle"/>
+
+            <!-- The custom width attr in these views refers to the min width. The view
+                 will not be less than 114 dp. -->
+            <io.bluephoenix.imagewall.views.CustomBtn
+                android:id="@+id/addImageBtn"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextAddDescription"
+                custom:backgroundColor="@color/colorPrimary"
+                custom:width="@dimen/width_button"
+                custom:height="@dimen/height_button"
+                custom:padding="6dp"
+                custom:shadowColor="@color/colorPrimaryShadow"
+                custom:shadowOffset="2dp"
+                custom:shadowRadiusBlur="1dp"
+                custom:shadowRadiusBlurSelected="3dp"
+                custom:text="@string/add_photo_post_button"
+                custom:textColor="@color/white"
+                custom:textSize="11sp"
+                tools:ignore="SmallSp" >
+            </io.bluephoenix.imagewall.views.CustomBtn>
+
+            <TextView
+                android:id="@+id/txtAddPhotoHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/fake_edit_text_add_photo_hint"
+                android:textColor="@color/editTextHint"
+                app:layout_constraintBottom_toBottomOf="@+id/imgDisplayPhoto"
+                app:layout_constraintEnd_toEndOf="@+id/imgDisplayPhoto"
+                app:layout_constraintStart_toStartOf="@+id/imgDisplayPhoto"
+                app:layout_constraintTop_toTopOf="@+id/imgDisplayPhoto"/>
+
+            <ImageView
+                android:id="@+id/imgDisplayPhoto"
+                android:layout_width="@dimen/width_edit_box"
+                android:layout_height="@dimen/height_image_view_photo"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/edit_text_bg"
+                android:clickable="true"
+                android:contentDescription="@string/content_description_selected_photo"
+                android:focusable="true"
+                android:padding="1.5dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

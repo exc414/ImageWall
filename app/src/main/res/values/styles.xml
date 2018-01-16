@@ -13,11 +13,37 @@
         <!-- These options need to go together -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:listDivider">@color/colorPrimaryDivider</item>
 
     </style>
 
     <style name="CustomAccentOverlay" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="EditTextOverride">
+        <item name="colorControlNormal">@color/colorControlNormal</item>
+        <item name="colorControlActivated">@color/colorControlActivated</item>
+    </style>
+
+    <style name="DrawerTheme" parent="ThemeOverlay.AppCompat.Dark">
+        <!-- Color of text and icon when SELECTED -->
+        <!--<item name="colorPrimary">@color/drawerSelected</item> -->
+        <!--<item name="colorAccent">@color/drawerSelected</item> -->
+        <!-- Background color when SELECTED -->
+        <item name="colorControlHighlight">@android:color/transparent</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="Theme.AppCompat">
+        <!-- Changes the color of the hamburger button and tbe back button -->
+        <item name="colorControlNormal">@color/white</item>
+        <!-- Changes the color of the hamburger button only -->
+        <!-- <item name="drawerArrowStyle">@style/DrawerArrowStyle</item> -->
+    </style>
+
+    <!-- Change the hamburger menu button color -->
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/white</item>
     </style>
 
 </resources>

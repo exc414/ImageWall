@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "855851835467",
+    "firebase_url": "https://imagewall-4a8af.firebaseio.com",
+    "project_id": "imagewall-4a8af",
+    "storage_bucket": "imagewall-4a8af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855851835467:android:7620bb4b1615d564",
+        "android_client_info": {
+          "package_name": "io.bluephoenix.imagewall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855851835467-kg4h3op6agtqvbknkidv0q0mfn9675vs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.bluephoenix.imagewall",
+            "certificate_hash": "951a9f8a71b9965bbbf35df143dc55d3e0f4a6fc"
+          }
+        },
+        {
+          "client_id": "855851835467-fniea8e409ul1sre5ceb54dr98hn2ojr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH3hbv5PkgZHdwERvsV9EfdbJDyIf6-1M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "855851835467-fniea8e409ul1sre5ceb54dr98hn2ojr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

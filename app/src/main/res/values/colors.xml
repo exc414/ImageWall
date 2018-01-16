@@ -2,12 +2,22 @@
 <resources>
     <!-- AARRGGBB = AA (Alpha) RR (Red) GG (Green) BB (Blue)-->
     <color name="colorPrimary">#4680ff</color>
-    <color name="colorPrimaryLight">#d9e9fb</color>
+    <color name="colorPrimaryLight">#77a0fd</color>
+    <color name="colorPrimaryLighter">#dce7fd</color>
     <color name="colorPrimaryDark">#3f74e7</color>
-    <color name="colorAccent">#1a1d24</color>
+    <color name="colorAccent">#1d252d</color>
 
     <color name="ghostWhite">#f7f8fb</color>
-    <color name="white">#FFFFFF</color>
+    <color name="white">#ffffff</color>
     <color name="colorPrimaryShadow">#704786ff</color>
+    <color name="colorPrimaryDivider">#154786ff</color>
 
+    <color name="editTextStroke">#edeff1</color>
+    <color name="editTextHint">#ced1d4</color>
+    <color name="editTextText">#888</color>
+
+    <color name="error">#fb607f</color>
+
+    <color name="colorControlNormal">@color/colorPrimaryLight</color>
+    <color name="colorControlActivated">@color/colorPrimaryLight</color>
 </resources>
