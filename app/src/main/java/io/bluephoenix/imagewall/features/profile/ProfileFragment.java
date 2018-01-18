@@ -11,8 +11,9 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import io.bluephoenix.imagewall.R;
-import io.bluephoenix.imagewall.app.Components;
-import io.bluephoenix.imagewall.common.PresenterDef;
+import io.bluephoenix.imagewall.features.base.FragmentPresenters;
+
+import static io.bluephoenix.imagewall.common.PresenterFragmentDef.PROFILE;
 
 /**
  * @author Carlos A. Perez Zubizarreta
@@ -30,8 +31,6 @@ public class ProfileFragment extends Fragment implements IProfileContract.Publis
      * Called to do initial creation of a fragment.  This is called after
      * {@link #onAttach(Activity)} and before
      * {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
-     * <p>Any restored child fragments will be created before the base
-     * <code>Fragment.onCreate</code> method returns.</p>
      *
      * @param savedInstanceState If the fragment is being re-created from
      *                           a previous saved state, this is the state.
@@ -40,9 +39,9 @@ public class ProfileFragment extends Fragment implements IProfileContract.Publis
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
-        profilePresenter = (ProfilePresenter) Components.getPresenter(PresenterDef.PROFILE);
+        profilePresenter = (ProfilePresenter) FragmentPresenters.getPresenter(PROFILE);
         profilePresenter.attachView(this);
+        profilePresenter.populateProfile();
     }
 
     @Override
@@ -52,5 +51,16 @@ public class ProfileFragment extends Fragment implements IProfileContract.Publis
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this, view);
         return view;
+    }
+
+    /**
+     * Called when the fragment is no longer in use.  This is called
+     * after {@link #onStop()} and before {@link #onDetach()}.
+     */
+    @Override
+    public void onDestroy()
+    {
+        profilePresenter.detachView();
+        super.onDestroy();
     }
 }

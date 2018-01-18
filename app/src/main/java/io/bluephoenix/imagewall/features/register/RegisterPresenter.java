@@ -11,9 +11,9 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import io.bluephoenix.imagewall.app.Components;
 import io.bluephoenix.imagewall.common.RegistrationFailureDef;
 import io.bluephoenix.imagewall.data.model.User;
 import io.bluephoenix.imagewall.data.repo.IRepository;
@@ -29,13 +29,16 @@ public class RegisterPresenter extends BasePresenter<IRegisterContract.PublishTo
         implements IRegisterContract.Presenter
 {
     private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
     private IRepository.Storage storage;
     private User user;
     private int errorMessage = RegistrationFailureDef.GENERAL_ERROR;
 
-    public RegisterPresenter(FirebaseAuth firebaseAuth, IRepository.Storage storage)
+    public RegisterPresenter(FirebaseAuth firebaseAuth, FirebaseDatabase firebaseDatabase,
+                             IRepository.Storage storage)
     {
         this.firebaseAuth = firebaseAuth;
+        this.firebaseDatabase = firebaseDatabase;
         this.storage = storage;
     }
 
@@ -98,7 +101,7 @@ public class RegisterPresenter extends BasePresenter<IRegisterContract.PublishTo
         {
             Log.i(Constant.TAG, "onAuthStateChanged : " + getClass().getName());
 
-            Components.getFDBReference().addListenerForSingleValueEvent(
+            firebaseDatabase.getReference().addListenerForSingleValueEvent(
                     new ValueEventListener()
             {
                 @Override

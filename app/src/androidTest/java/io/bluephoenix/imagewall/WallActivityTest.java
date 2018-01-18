@@ -5,6 +5,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Rule;
 import org.junit.runner.RunWith;
+
 import io.bluephoenix.imagewall.features.wall.WallActivity;
 
 /**

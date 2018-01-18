@@ -5,17 +5,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import io.bluephoenix.imagewall.features.favourite.FavouriteFragment;
-import io.bluephoenix.imagewall.features.friends.FriendsFragment;
 import io.bluephoenix.imagewall.features.feed.FeedFragment;
+import io.bluephoenix.imagewall.features.friends.FriendsFragment;
 import io.bluephoenix.imagewall.features.profile.ProfileFragment;
+import io.bluephoenix.imagewall.util.Constant;
 
 /**
  * @author Carlos A. Perez Zubizarreta
  */
 public class ViewPagerAdapter extends FragmentPagerAdapter
 {
-    private final int numberOfFragments = 4;
-
     ViewPagerAdapter(FragmentManager fragmentManager)
     {
         super(fragmentManager);
@@ -32,8 +31,8 @@ public class ViewPagerAdapter extends FragmentPagerAdapter
         switch(position)
         {
             case 0: return FeedFragment.newInstance();
-            case 1: return FriendsFragment.newInstance("SecondFragment, Instance 2");
-            case 2: return FavouriteFragment.newInstance("ThirdFragment, Instance 3");
+            case 1: return FriendsFragment.newInstance();
+            case 2: return FavouriteFragment.newInstance();
             case 3: return ProfileFragment.newInstance();
             default: return FeedFragment.newInstance();
         }
@@ -43,5 +42,5 @@ public class ViewPagerAdapter extends FragmentPagerAdapter
      * Return the number of views available.
      */
     @Override
-    public int getCount() { return numberOfFragments; }
+    public int getCount() { return Constant.VIEW_PAGER_ITEMS; }
 }

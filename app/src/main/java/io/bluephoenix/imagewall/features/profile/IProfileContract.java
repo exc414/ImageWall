@@ -12,6 +12,6 @@ public interface IProfileContract
 
     interface Presenter
     {
-
+        void populateProfile();
     }
 }

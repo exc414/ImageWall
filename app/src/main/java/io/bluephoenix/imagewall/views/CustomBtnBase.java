@@ -12,12 +12,11 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+
 import io.bluephoenix.imagewall.R;
 import io.bluephoenix.imagewall.util.AnimListener;
-import io.bluephoenix.imagewall.util.Constant;
 import io.bluephoenix.imagewall.util.Util;
 
 /**

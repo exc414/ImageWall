@@ -1,6 +1,7 @@
 package io.bluephoenix.imagewall.data.repo;
 
-import io.bluephoenix.imagewall.app.Components;
+import com.google.firebase.database.FirebaseDatabase;
+
 import io.bluephoenix.imagewall.data.model.User;
 
 /**
@@ -8,9 +9,16 @@ import io.bluephoenix.imagewall.data.model.User;
  */
 public class Storage implements IRepository.Storage
 {
+    private FirebaseDatabase firebaseDatabase;
+
+    public Storage(FirebaseDatabase firebaseDatabase)
+    {
+        this.firebaseDatabase = firebaseDatabase;
+    }
+
     @Override
     public void createUserProfile(User user)
     {
-        Components.getFDBReference("users").child(user.getUserid()).setValue(user);
+        firebaseDatabase.getReference("users").child(user.getUserid()).setValue(user);
     }
 }

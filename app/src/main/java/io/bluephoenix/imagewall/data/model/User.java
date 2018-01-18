@@ -63,8 +63,8 @@ public class User
      * @param userid        A string of random characters for a unique user value.
      */
     public User(String email, String username, String name, String age, String country,
-                        long posts, long followers, long following, String profilePhoto,
-                        String userid)
+                long posts, long followers, long following, String profilePhoto,
+                String userid)
     {
         this.email = email;
         this.username = username;

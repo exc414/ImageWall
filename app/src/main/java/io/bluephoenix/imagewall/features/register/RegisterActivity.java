@@ -12,13 +12,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.bluephoenix.imagewall.R;
-import io.bluephoenix.imagewall.common.PresenterDef;
+import io.bluephoenix.imagewall.common.PresenterActivityDef;
 import io.bluephoenix.imagewall.common.RegistrationFailureDef;
-import io.bluephoenix.imagewall.common.RegistrationFailureDef.*;
+import io.bluephoenix.imagewall.common.RegistrationFailureDef.RegistrationFailureType;
 import io.bluephoenix.imagewall.data.model.User;
 import io.bluephoenix.imagewall.features.base.BaseActivity;
 import io.bluephoenix.imagewall.features.base.IDialogCallback;
@@ -93,7 +95,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterContract.
         setContentView(R.layout.activity_register);
         setToolbarBackButton(toolbar, getString(R.string.register_activity_name));
 
-        registerPresenter = attachPresenter(RegisterPresenter.class, PresenterDef.REGISTER);
+        registerPresenter = attachPresenter(RegisterPresenter.class, PresenterActivityDef.REGISTER);
         registerPresenter.attachView(this);
         registerDialogs = new RegisterDialogs(this);
 

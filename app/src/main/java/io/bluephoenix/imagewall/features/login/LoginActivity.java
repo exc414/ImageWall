@@ -12,12 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.bluephoenix.imagewall.R;
 import io.bluephoenix.imagewall.common.LoginResponseDef;
-import io.bluephoenix.imagewall.common.LoginResponseDef.*;
-import io.bluephoenix.imagewall.common.PresenterDef;
+import io.bluephoenix.imagewall.common.LoginResponseDef.LoginResponseType;
+import io.bluephoenix.imagewall.common.PresenterActivityDef;
 import io.bluephoenix.imagewall.features.base.BaseActivity;
 import io.bluephoenix.imagewall.features.base.IDialogCallback;
 import io.bluephoenix.imagewall.features.register.RegisterActivity;
@@ -67,7 +68,7 @@ public class LoginActivity extends BaseActivity implements ILoginContract.Publis
         setContentView(R.layout.activity_login);
         setToolbar(toolbar, getString(R.string.login_activity_name));
 
-        loginPresenter = attachPresenter(LoginPresenter.class, PresenterDef.LOGIN);
+        loginPresenter = attachPresenter(LoginPresenter.class, PresenterActivityDef.LOGIN);
         loginPresenter.attachView(this);
         loginDialogs = new LoginDialogs(this);
 

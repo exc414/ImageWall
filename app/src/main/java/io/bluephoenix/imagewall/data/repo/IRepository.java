@@ -10,7 +10,7 @@ public interface IRepository
 {
     interface Preferences
     {
-
+        void getProfileInformation();
     }
 
     interface Storage

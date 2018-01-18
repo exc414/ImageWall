@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import io.bluephoenix.imagewall.R;
-import io.bluephoenix.imagewall.common.PresenterDef;
+import io.bluephoenix.imagewall.common.PresenterActivityDef;
 import io.bluephoenix.imagewall.features.base.BaseActivity;
 import io.bluephoenix.imagewall.util.Constant;
 
@@ -21,7 +21,7 @@ public class DetailActivity extends BaseActivity implements IDetailContract.Publ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        detailPresenter = attachPresenter(DetailPresenter.class, PresenterDef.DETAIL);
+        detailPresenter = attachPresenter(DetailPresenter.class, PresenterActivityDef.DETAIL);
         detailPresenter.attachView(this);
         Log.d(Constant.TAG, "onCreate : " + getClass().getName());
     }

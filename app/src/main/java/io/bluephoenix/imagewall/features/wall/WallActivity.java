@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import butterknife.BindView;
 import io.bluephoenix.imagewall.R;
-import io.bluephoenix.imagewall.common.PresenterDef;
+import io.bluephoenix.imagewall.common.PresenterActivityDef;
 import io.bluephoenix.imagewall.features.base.BaseActivity;
 import io.bluephoenix.imagewall.features.login.LoginActivity;
 import io.bluephoenix.imagewall.features.post.PostActivity;
@@ -63,6 +63,9 @@ public class WallActivity extends BaseActivity implements IWallContract.PublishT
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        wallPresenter = attachPresenter(WallPresenter.class, PresenterActivityDef.WALL);
+        wallPresenter.attachView(this);
+
         try
         {
             //Set up viewpager
@@ -77,8 +80,6 @@ public class WallActivity extends BaseActivity implements IWallContract.PublishT
             ex.printStackTrace();
         }
 
-        wallPresenter = attachPresenter(WallPresenter.class, PresenterDef.WALL);
-        wallPresenter.attachView(this);
         Log.d(Constant.TAG, "onCreate : " + getClass().getName());
     }
 
@@ -87,6 +88,14 @@ public class WallActivity extends BaseActivity implements IWallContract.PublishT
     {
         super.onResume();
         wallPresenter.isUserAlreadyLoggedIn();
+    }
+
+    //Close/release everything.
+    @Override
+    protected void onDestroy()
+    {
+        wallPresenter.detachView();
+        super.onDestroy();
     }
 
     /**

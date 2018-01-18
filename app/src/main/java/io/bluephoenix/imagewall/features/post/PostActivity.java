@@ -18,15 +18,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
+
 import butterknife.BindView;
 import io.bluephoenix.imagewall.BuildConfig;
 import io.bluephoenix.imagewall.R;
-import io.bluephoenix.imagewall.common.PresenterDef;
+import io.bluephoenix.imagewall.common.PresenterActivityDef;
 import io.bluephoenix.imagewall.features.base.BaseActivity;
 import io.bluephoenix.imagewall.util.Constant;
 
@@ -61,7 +63,7 @@ public class PostActivity extends BaseActivity implements IPostContract.PublishT
         setContentView(R.layout.activity_post);
         setToolbarBackButton(toolbar, getString(R.string.post_activity_name));
 
-        postPresenter = attachPresenter(PostPresenter.class, PresenterDef.POST);
+        postPresenter = attachPresenter(PostPresenter.class, PresenterActivityDef.POST);
         postPresenter.attachView(this);
         Log.d(Constant.TAG, "onCreate : " + getClass().getName());
     }
@@ -122,7 +124,7 @@ public class PostActivity extends BaseActivity implements IPostContract.PublishT
             {
                 try
                 {
-                    //Need to input streams as you can only read it once. The next time
+                    //Need two input streams as you can only read it once. The next time
                     //a read is performed the cursor will already be at the end and thus
                     //return nothing. Using mark() and reset() did not work properly.
                     InputStream is1 = getContentResolver().openInputStream(data.getData());
@@ -141,7 +143,7 @@ public class PostActivity extends BaseActivity implements IPostContract.PublishT
 
     /**
      * Take a photo using an intent and the user's default camera application.
-     * Requires Camera and Storage (Read/Write) permissions.
+     * Requires Camera and Repo (Read/Write) permissions.
      */
     public void selectPhotoFromCamera()
     {
@@ -194,7 +196,7 @@ public class PostActivity extends BaseActivity implements IPostContract.PublishT
     /**
      * Allow the user to select a photo from the gallery (or any other application
      * that can handle the intent).
-     * Requires Storage(Read/Write) permission.
+     * Requires Repo(Read/Write) permission.
      */
     public void selectPhotoFromGallery()
     {

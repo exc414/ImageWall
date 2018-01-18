@@ -8,5 +8,5 @@ public class Constant
 {
     //For use with Log
     public static final String TAG = "Image_Wall";
-    public static final int NUMBER_OF_VIEW_PAGER_ITEMS = 4;
+    public static final int VIEW_PAGER_ITEMS = 4;
 }

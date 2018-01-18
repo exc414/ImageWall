@@ -3,7 +3,9 @@ package io.bluephoenix.imagewall.util;
 import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
+
 import java.security.SecureRandom;
+
 import io.bluephoenix.imagewall.app.App;
 
 /**

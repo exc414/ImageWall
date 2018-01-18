@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 import io.bluephoenix.imagewall.features.base.BasePresenter;
 import io.bluephoenix.imagewall.util.Constant;
 

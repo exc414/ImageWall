@@ -3,7 +3,6 @@ package io.bluephoenix.imagewall.features.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -13,16 +12,18 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.lang.reflect.Constructor;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import io.bluephoenix.imagewall.app.Components;
-import io.bluephoenix.imagewall.common.PresenterDef;
-import io.bluephoenix.imagewall.common.PresenterDef.*;
+import io.bluephoenix.imagewall.common.PresenterActivityDef;
+import io.bluephoenix.imagewall.common.PresenterActivityDef.PresenterActivityType;
 import io.bluephoenix.imagewall.data.repo.IRepository;
-import io.bluephoenix.imagewall.features.login.LoginActivity;
-import io.bluephoenix.imagewall.features.wall.WallActivity;
+import io.bluephoenix.imagewall.data.repo.Storage;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -178,7 +179,7 @@ public abstract class BaseActivity extends AppCompatActivity
      * @param presenterType An int which corresponds to the type of presenter.
      * @return              an object casted into the correct class type.
      */
-    protected<V> V attachPresenter(Class<V> classType, @PresenterType int presenterType)
+    protected<V> V attachPresenter(Class<V> classType, @PresenterActivityType int presenterType)
     {
         if(getLastCustomNonConfigurationInstance() == null)
         {
@@ -191,36 +192,33 @@ public abstract class BaseActivity extends AppCompatActivity
 
                 switch(presenterType)
                 {
-                    case PresenterDef.REGISTER:
+                    case PresenterActivityDef.REGISTER:
 
                         Constructor<?> constructorRegister = genClass.getConstructor(
                                 FirebaseAuth.class, IRepository.Storage.class);
 
                         newPresenter = constructorRegister.newInstance(
-                                FirebaseAuth.getInstance(), Components.getStorage());
+                                FirebaseAuth.getInstance(), FirebaseDatabase.getInstance(),
+                                new Storage(FirebaseDatabase.getInstance()));
                         break;
 
-                    case PresenterDef.LOGIN:
+                    case PresenterActivityDef.LOGIN:
 
                         Constructor<?> constructorLogin = genClass.getConstructor(
                                 FirebaseAuth.class);
                         newPresenter = constructorLogin.newInstance(FirebaseAuth.getInstance());
                         break;
 
-                    case PresenterDef.WALL:
+                    case PresenterActivityDef.DETAIL:
+
+                    case PresenterActivityDef.WALL:
 
                         Constructor<?> constructorWall = genClass.getConstructor(
                                 FirebaseAuth.class);
                         newPresenter = constructorWall.newInstance(FirebaseAuth.getInstance());
                         break;
 
-                    case PresenterDef.DETAIL:
-                    case PresenterDef.FAVOURITE:
-                    case PresenterDef.FRIENDS:
-                    case PresenterDef.FEED:
-                    case PresenterDef.POST:
-                    case PresenterDef.PROFILE:
-                    case PresenterDef.DEFAULT:
+                    case PresenterActivityDef.POST:
                     default: newPresenter = genClass.newInstance(); break;
                 }
 

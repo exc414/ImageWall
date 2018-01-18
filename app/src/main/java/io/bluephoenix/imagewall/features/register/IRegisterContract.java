@@ -1,6 +1,6 @@
 package io.bluephoenix.imagewall.features.register;
 
-import io.bluephoenix.imagewall.common.RegistrationFailureDef.*;
+import io.bluephoenix.imagewall.common.RegistrationFailureDef.RegistrationFailureType;
 import io.bluephoenix.imagewall.data.model.User;
 
 /**

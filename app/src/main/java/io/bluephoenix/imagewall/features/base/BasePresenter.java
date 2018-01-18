@@ -15,7 +15,7 @@ public abstract class BasePresenter<V>
         this.publishToView = view;
     }
 
-    final void detachView()
+    public final void detachView()
     {
         this.publishToView = null;
     }

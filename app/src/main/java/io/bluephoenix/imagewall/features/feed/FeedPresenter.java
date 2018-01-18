@@ -2,6 +2,7 @@ package io.bluephoenix.imagewall.features.feed;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import io.bluephoenix.imagewall.features.base.BasePresenter;
 
 /**

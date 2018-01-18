@@ -10,13 +10,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.bluephoenix.imagewall.R;
-import io.bluephoenix.imagewall.app.Components;
-import io.bluephoenix.imagewall.common.PresenterDef;
+import io.bluephoenix.imagewall.features.base.FragmentPresenters;
 import io.bluephoenix.imagewall.util.CardDecorator;
+
+import static io.bluephoenix.imagewall.common.PresenterFragmentDef.FEED;
 
 /**
  * @author Carlos A. Perez Zubizarreta
@@ -40,15 +43,6 @@ public class FeedFragment extends Fragment implements IFeedContract.PublishToVie
      * Called to do initial creation of a fragment.  This is called after
      * {@link #onAttach(Activity)} and before
      * {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
-     * <p>
-     * <p>Note that this can be called while the fragment's activity is
-     * still in the process of being created.  As such, you can not rely
-     * on things like the activity's content view hierarchy being initialized
-     * at this point.  If you want to do work once the activity itself is
-     * created, see {@link #onActivityCreated(Bundle)}.
-     * <p>
-     * <p>Any restored child fragments will be created before the base
-     * <code>Fragment.onCreate</code> method returns.</p>
      *
      * @param savedInstanceState If the fragment is being re-created from
      *                           a previous saved state, this is the state.
@@ -57,8 +51,7 @@ public class FeedFragment extends Fragment implements IFeedContract.PublishToVie
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
-        feedPresenter = (FeedPresenter) Components.getPresenter(PresenterDef.FEED);
+        feedPresenter = (FeedPresenter) FragmentPresenters.getPresenter(FEED);
         feedPresenter.attachView(this);
         feedAdapter = new FeedAdapter();
     }
@@ -72,7 +65,8 @@ public class FeedFragment extends Fragment implements IFeedContract.PublishToVie
 
         personalRecyclerView.setAdapter(feedAdapter);
 
-        int cardPadding = getResources().getDimensionPixelSize(R.dimen.recycler_view_item_padding);
+        int cardPadding = getResources().getDimensionPixelSize(
+                R.dimen.recycler_view_item_padding);
         personalRecyclerView.addItemDecoration(new CardDecorator(cardPadding));
         personalRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -101,5 +95,16 @@ public class FeedFragment extends Fragment implements IFeedContract.PublishToVie
     public void init(List<String> data)
     {
         feedAdapter.init(data);
+    }
+
+    /**
+     * Called when the fragment is no longer in use.  This is called
+     * after {@link #onStop()} and before {@link #onDetach()}.
+     */
+    @Override
+    public void onDestroy()
+    {
+        feedPresenter.detachView();
+        super.onDestroy();
     }
 }
