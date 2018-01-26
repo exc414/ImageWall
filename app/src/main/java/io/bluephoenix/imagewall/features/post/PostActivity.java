@@ -28,7 +28,7 @@ import java.util.Calendar;
 import butterknife.BindView;
 import io.bluephoenix.imagewall.BuildConfig;
 import io.bluephoenix.imagewall.R;
-import io.bluephoenix.imagewall.common.PresenterActivityDef;
+import io.bluephoenix.imagewall.core.common.PresenterActivityDef;
 import io.bluephoenix.imagewall.features.base.BaseActivity;
 import io.bluephoenix.imagewall.util.Constant;
 

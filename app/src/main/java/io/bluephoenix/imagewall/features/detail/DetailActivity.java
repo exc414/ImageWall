@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import io.bluephoenix.imagewall.R;
-import io.bluephoenix.imagewall.common.PresenterActivityDef;
+import io.bluephoenix.imagewall.core.common.PresenterActivityDef;
 import io.bluephoenix.imagewall.features.base.BaseActivity;
 import io.bluephoenix.imagewall.util.Constant;
 

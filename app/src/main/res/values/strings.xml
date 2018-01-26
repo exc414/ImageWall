@@ -6,6 +6,7 @@
     <string name="wall_activity_name">@string/app_name</string>
     <string name="post_activity_name">Post Photo</string>
     <string name="profile_activity_name">Profile</string>
+    <string name="edit_profile_activity_name">Edit Profile</string>
     <string name="login_activity_name">Login</string>
     <string name="register_activity_name">Register</string>
     <string name="details_activity_name">Details</string>
@@ -61,6 +62,9 @@
 
     <!-- ============================= Profile Activity ================================= -->
 
+    <string name="profile_photo_name">John Doe</string>
+    <string name="profile_country">United States</string>
+    <string name="profile_website">www.youtube.com</string>
     <string name="profile_post_num">256</string>
     <string name="profile_followers_num">26K</string>
     <string name="profile_following_num">152</string>
@@ -69,7 +73,34 @@
     <string name="profile_followers_title">followers</string>
     <string name="profile_following_title">following</string>
 
-    <string name="profile_photo_name">John Doe</string>
+    <!-- ============================ Edit Profile Activity ============================= -->
+
+    <string name="edit_profile_public">PUBLIC</string>
+    <string name="edit_profile_name">YOUR NAME</string>
+    <string name="edit_profile_username">USERNAME</string>
+    <string name="edit_profile_website">WEBSITE</string>
+    <string name="edit_profile_country">COUNTRY</string>
+
+    <string name="edit_profile_private">PRIVATE</string>
+    <string name="edit_profile_email">EMAIL</string>
+    <string name="edit_profile_password">PASSWORD</string>
+    <string name="edit_profile_password_circle_bullet">
+        \u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022</string>
+
+    <string name="edit_profile_password_change_dialog_title">Change your password</string>
+    <string name="edit_profile_password_change_positive_button">SAVE</string>
+    <string name="edit_profile_password_change_dialog_negative_button">DISCARD</string>
+    <string name="save_updated_profile_information">Save updated menu information.</string>
+    <string name="snack_bar_successfully_updated_profile">Successfully update profile.</string>
+
+    <string name="snack_bar_successfully_update_password">Password successfully updated.</string>
+    <string name="snack_bar_failed_update_password">Password update failed.</string>
+
+    <string name="edit_profile_update_dialog_title">Updating Details</string>
+    <string name="edit_profile_update_dialog_content">Please Wait …</string>
+
+    <string name="snack_bar_email_already_in_used">Email address is already in used"</string>
+    <string name="snack_bar_username_already_in_used">Email address is already in used"</string>
 
     <!-- =========================== Forgot Password Dialog ============================= -->
 
@@ -86,12 +117,14 @@
     <!-- =============================== Edit Text Hint ================================= -->
 
     <string name="edit_text_email_hint">E-mail</string>
-    <string name="edit_text_email_and_username_hint">E-mail or username</string>
     <string name="edit_text_username_hint">Username</string>
     <string name="edit_text_password_hint">Password</string>
     <string name="edit_text_password_retype_hint">Re-type password</string>
+    <string name="edit_text_old_password_hint_dialog">Old password</string>
+    <string name="edit_text_new_password_hint_dialog">New password</string>
+    <string name="edit_text_password_retype_hint_dialog">Re-type new password</string>
     <string name="edit_text_name_hint">Enter your first and last name</string>
-    <string name="edit_text_age_hint">Age</string>
+    <string name="edit_text_website_hint">Enter your website</string>
     <string name="edit_text_add_title_hint">Enter a title …</string>
     <string name="edit_text_add_description_hint">Enter a description …</string>
     <string name="fake_edit_text_btn_country_hint">Country</string>
@@ -147,7 +180,8 @@
     <string name="error_email">Invalid email address.</string>
     <string name="error_password">Password needs to be at least 8 characters.</string>
     <string name="error_retype_password">Passwords do not match.</string>
-    <string name="error_age">Age is not valid.</string>
+    <string name="error_website">Invalid web address.</string>
+    <string name="error_auth_failed">Current password was incorrect.</string>
     <string name="error_password_does_not_meet_criteria">Password requires at least 2
         numbers and be at least 8 characters in length.</string>
     <string name="error_creating_account">Error creating account. Please try again later.</string>

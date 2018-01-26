@@ -20,6 +20,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Standard Support Libs
     implementation 'com.android.support:appcompat-v7:27.0.2'
     implementation 'com.google.firebase:firebase-database:11.8.0'
     implementation 'com.google.firebase:firebase-storage:11.8.0'
@@ -28,21 +30,51 @@ dependencies {
     implementation 'com.android.support:animated-vector-drawable:27.0.2'
     implementation 'com.android.support:design:27.0.2'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
     //Allows material design on dialogs as far back as API 13
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+
     //Butter Knife
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
     //Font
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+
+    //Glide Image Loading Library
+    implementation 'com.github.bumptech.glide:glide:4.5.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+
+    //Java 8 Completable future
+    implementation 'net.sourceforge.streamsupport:streamsupport:1.5.6'
+    implementation 'net.sourceforge.streamsupport:streamsupport-cfuture:1.5.6'
+    implementation 'net.sourceforge.streamsupport:streamsupport-atomic:1.5.6'
+    implementation 'net.sourceforge.streamsupport:streamsupport-flow:1.5.6'
+    implementation 'net.sourceforge.streamsupport:streamsupport-literal:1.5.6'
+
+    //Job Scheduling
+    compile 'com.evernote:android-job:1.2.1'
+
+    //Room
+    implementation 'android.arch.persistence.room:runtime:1.0.0'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.0.0'
+
+    //Paging
+    implementation 'android.arch.paging:runtime:1.0.0-alpha4-1'
+
+    //Testing Espresso
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test:rules:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
-    implementation 'com.github.bumptech.glide:glide:4.5.0'
+
+    //Stetho (facebook) - debug bridge for Android applications
+    debugImplementation 'com.facebook.stetho:stetho:1.5.0'
+    debugImplementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+
+    //Testing mockito
     testImplementation 'org.mockito:mockito-core:2.+'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

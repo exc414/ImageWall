@@ -1,6 +1,6 @@
 package io.bluephoenix.imagewall.features.login;
 
-import io.bluephoenix.imagewall.common.LoginResponseDef.LoginResponseType;
+import io.bluephoenix.imagewall.core.common.LoginResponseDef.LoginResponseType;
 
 /**
  * @author Carlos A. Perez Zubizarreta

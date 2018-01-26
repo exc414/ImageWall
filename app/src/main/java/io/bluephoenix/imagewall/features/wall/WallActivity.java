@@ -17,10 +17,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import butterknife.BindView;
 import io.bluephoenix.imagewall.R;
-import io.bluephoenix.imagewall.common.PresenterActivityDef;
+import io.bluephoenix.imagewall.core.common.PresenterActivityDef;
 import io.bluephoenix.imagewall.features.base.BaseActivity;
 import io.bluephoenix.imagewall.features.login.LoginActivity;
 import io.bluephoenix.imagewall.features.post.PostActivity;
+import io.bluephoenix.imagewall.features.profile.EditProfileActivity;
 import io.bluephoenix.imagewall.util.Constant;
 
 /**
@@ -157,11 +158,9 @@ public class WallActivity extends BaseActivity implements IWallContract.PublishT
     {
         switch(item.getItemId())
         {
-            case R.id.editProfile : //start(ProfileFragment.class);
-                break;
+            case R.id.editProfile : start(EditProfileActivity.class); break;
 
-            case R.id.post: start(PostActivity.class);
-                break;
+            case R.id.post: start(PostActivity.class); break;
 
             case R.id.settings: //do something
                 break;

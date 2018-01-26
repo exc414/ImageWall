@@ -52,7 +52,7 @@
                 android:drawablePadding="16dp"
                 android:drawableStart="@drawable/ic_person_grey_200_18dp"
                 android:ems="10"
-                android:hint="@string/edit_text_email_and_username_hint"
+                android:hint="@string/edit_text_email_hint"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
@@ -242,33 +242,6 @@
                 tools:ignore="SmallSp">
             </io.bluephoenix.imagewall.views.CustomBtnPlus>
 
-            <io.bluephoenix.imagewall.views.CustomBtnPlus
-                android:id="@+id/facebookLoginBtn"
-                android:layout_width="@dimen/width_button"
-                android:layout_height="@dimen/height_button"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/googleLoginBtn"
-                custom:backgroundColor="@color/colorPrimary"
-                custom:width="@dimen/width_button"
-                custom:height="@dimen/height_button"
-                custom:leftBackground="@color/colorPrimaryDark"
-                custom:padding="6dp"
-                custom:shadowColor="@color/colorPrimaryShadow"
-                custom:shadowOffset="2dp"
-                custom:shadowRadiusBlur="1dp"
-                custom:shadowRadiusBlurSelected="3dp"
-                custom:text="@string/login_button_facebook"
-                custom:textColor="@color/white"
-                custom:textLeft="@string/login_button_facebook_letter"
-                custom:textLeftSize="16sp"
-                custom:textSize="11sp"
-                tools:ignore="SmallSp">
-            </io.bluephoenix.imagewall.views.CustomBtnPlus>
-
             <Button
                 android:id="@+id/createAccountBtn"
                 style="@style/Base.Widget.AppCompat.Button.Borderless"
@@ -287,7 +260,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/txtCreateAccount"
-                app:layout_constraintTop_toBottomOf="@+id/facebookLoginBtn"/>
+                app:layout_constraintTop_toBottomOf="@+id/googleLoginBtn"/>
 
             <TextView
                 android:id="@+id/txtCreateAccount"
@@ -303,7 +276,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/facebookLoginBtn"/>
+                app:layout_constraintTop_toBottomOf="@+id/googleLoginBtn"/>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

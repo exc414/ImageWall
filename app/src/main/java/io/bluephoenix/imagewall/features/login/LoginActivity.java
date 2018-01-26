@@ -8,22 +8,27 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.bluephoenix.imagewall.R;
-import io.bluephoenix.imagewall.common.LoginResponseDef;
-import io.bluephoenix.imagewall.common.LoginResponseDef.LoginResponseType;
-import io.bluephoenix.imagewall.common.PresenterActivityDef;
+import io.bluephoenix.imagewall.core.common.LoginResponseDef;
+import io.bluephoenix.imagewall.core.common.LoginResponseDef.LoginResponseType;
+import io.bluephoenix.imagewall.core.common.PresenterActivityDef;
 import io.bluephoenix.imagewall.features.base.BaseActivity;
-import io.bluephoenix.imagewall.features.base.IDialogCallback;
+import io.bluephoenix.imagewall.features.base.FocusListener;
+import io.bluephoenix.imagewall.features.dialogs.IDialogCallback;
+import io.bluephoenix.imagewall.features.dialogs.LoginDialogs;
 import io.bluephoenix.imagewall.features.register.RegisterActivity;
 import io.bluephoenix.imagewall.features.wall.WallActivity;
 import io.bluephoenix.imagewall.util.Constant;
+import io.bluephoenix.imagewall.util.Util;
 import io.bluephoenix.imagewall.views.CustomBtn;
 
 public class LoginActivity extends BaseActivity implements ILoginContract.PublishToView,
@@ -58,8 +63,6 @@ public class LoginActivity extends BaseActivity implements ILoginContract.Publis
 
     private LoginPresenter loginPresenter;
     private LoginDialogs loginDialogs;
-    private FocusListener focusListener = new FocusListener();
-    private int errorCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -120,7 +123,10 @@ public class LoginActivity extends BaseActivity implements ILoginContract.Publis
     @OnClick(R.id.loginBtn)
     public void loginOnClick()
     {
-        errorCount = 0;
+        //If anything has focus before checking the edit texts remove it.
+        constraintLayout.requestFocus();
+
+        int errorCount = 0;
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
 
@@ -128,35 +134,32 @@ public class LoginActivity extends BaseActivity implements ILoginContract.Publis
         //address.
         if(email.trim().isEmpty())
         {
-            setError(txtEmailError, R.string.error_empty);
+            errorCount = Util.setError(txtEmailError, R.string.error_empty);
         }
         else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches())
         {
-            setError(txtEmailError, R.string.error_email);
+            errorCount = Util.setError(txtEmailError, R.string.error_email);
         }
 
         //Check if the password field is empty. If not then check if it meets the minimum
         //length.
         if(password.trim().isEmpty())
         {
-            setError(txtPasswordError, R.string.error_empty);
+            errorCount = Util.setError(txtPasswordError, R.string.error_empty);
         }
         else if(password.length() < 8)
         {
-            setError(txtPasswordError, R.string.error_password);
+            errorCount = Util.setError(txtPasswordError, R.string.error_password);
         }
 
         //If there are no errors with the user's input then check his/her credentials.
+        //Clear focus from any edit text that may have them and clear the keyboard.
         if(errorCount == 0)
-        {
-            loginPresenter.checkUserCredentials(email, password);
-        }
-        else
-        {
-            //Clear focus from any edit text that may have them and clear the keyboard.
-            hideKeyboard();
-            constraintLayout.requestFocus();
-        }
+        { loginPresenter.checkUserCredentials(email, password); }
+
+        //Hide keyboard, clear focus.
+        Util.hideKeyboard(this);
+        constraintLayout.requestFocus();
     }
 
     /**
@@ -212,43 +215,20 @@ public class LoginActivity extends BaseActivity implements ILoginContract.Publis
     }
 
     /**
-     * Set visibility of errors text view and their message.
-     *
-     * @param generic         A text view object.
-     * @param errorMessageRes A int which points to a string resource.
-     */
-    private void setError(TextView generic, int errorMessageRes)
-    {
-        generic.setText(errorMessageRes);
-        generic.setVisibility(View.VISIBLE);
-        errorCount++;
-    }
-
-    /**
-     * Set focus listener on all the edit text.
+     * Set focus listener on all the edit text. When the edit text gain focus, the error
+     * message displayed will be hidden.
      */
     private void setFocusListener()
     {
+        int[] editTextsId = { R.id.editTextLoginEmail,  R.id.editTextLoginPassword };
+        List<TextView> textViews = new ArrayList<>();
+
+        textViews.add(txtEmailError);
+        textViews.add(txtPasswordError);
+
+        FocusListener focusListener = new FocusListener(editTextsId, textViews);
+
         editTextEmail.setOnFocusChangeListener(focusListener);
         editTextPassword.setOnFocusChangeListener(focusListener);
-    }
-
-    /**
-     * When the edit text gains focus set the visibility of the error messages
-     * to invisible.
-     */
-    class FocusListener implements View.OnFocusChangeListener
-    {
-        @Override
-        public void onFocusChange(View view, boolean focus)
-        {
-            if(focus)
-            {
-                if(view.getId() == R.id.editTextLoginEmail)
-                { txtEmailError.setVisibility(View.INVISIBLE); }
-                else if(view.getId() == R.id.editTextLoginPassword)
-                { txtPasswordError.setVisibility(View.INVISIBLE); }
-            }
-        }
     }
 }

@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import io.bluephoenix.imagewall.R;
 import io.bluephoenix.imagewall.features.base.FragmentPresenters;
 
-import static io.bluephoenix.imagewall.common.PresenterFragmentDef.FRIENDS;
+import static io.bluephoenix.imagewall.core.common.PresenterFragmentDef.FRIENDS;
 
 /**
  * @author Carlos A. Perez Zubizarreta

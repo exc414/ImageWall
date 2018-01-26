@@ -1,12 +1,18 @@
 package io.bluephoenix.imagewall.util;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 
 import java.security.SecureRandom;
 
 import io.bluephoenix.imagewall.app.App;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 /**
  * @author Carlos A. Perez Zubizarreta
@@ -24,16 +30,6 @@ public class Util
     public static int getPixelFromDP(int dp)
     {
         return (int) (dp * metrics.density);
-    }
-
-    /**
-     * Calculates a dp value into pixels for the current device.
-     * @param dp A virtual pixel unit that you should use when defining UI layout.
-     * @return a float with the number of pixels.
-     */
-    public static float getPixelFromDP(float dp)
-    {
-        return (dp * metrics.density);
     }
 
     /**
@@ -68,16 +64,43 @@ public class Util
                 {
                     return false;
                 }
-                else if(Character.isDigit(singleChar))
-                {
-                    count++;
-                }
+                else if(Character.isDigit(singleChar)) { count++; }
             }
 
             if(count < 2) { return false; }
         }
 
         return true;
+    }
+
+    /**
+     * Set visibility of errors text view and their message.
+     *
+     * @param generic         A text view object.
+     * @param errorMessageRes A int which points to a string resource.
+     */
+    public static int setError(TextView generic, int errorMessageRes)
+    {
+        generic.setText(errorMessageRes);
+        generic.setVisibility(View.VISIBLE);
+        return 1;
+    }
+
+    /**
+     * Check if the keyboard is visible. If so, hide the keyboard.
+     */
+    public static void hideKeyboard(Activity activity)
+    {
+        InputMethodManager inputMethodManager = (InputMethodManager)
+                activity.getSystemService(INPUT_METHOD_SERVICE);
+
+        //Verify if the soft keyboard is open and not null
+        if(inputMethodManager != null)
+        {
+            //noinspection ConstantConditions
+            inputMethodManager.hideSoftInputFromWindow(
+                    activity.getCurrentFocus().getWindowToken(), 0);
+        }
     }
 
     /**
@@ -99,11 +122,6 @@ public class Util
         SecureRandom random = new SecureRandom();
         long longToken = Math.abs(random.nextLong());
         return Long.toString(longToken, numberOfChars).substring(0, numberOfChars);
-    }
-
-    public static String expandUsername(String username)
-    {
-        return username.replace(".", " ");
     }
 
     public static String condenseUsername(String username)

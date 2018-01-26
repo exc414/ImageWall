@@ -26,6 +26,7 @@
         <activity android:name=".features.register.RegisterActivity" />
 
         <activity android:name=".features.login.LoginActivity" />
+        <activity android:name=".features.profile.EditProfileActivity" />
         <activity android:name=".features.detail.DetailActivity" />
         <activity android:name=".features.post.PostActivity" />
         <activity android:name=".features.about.AboutActivity" />

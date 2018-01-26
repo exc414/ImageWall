@@ -31,15 +31,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" >
+        tools:layout_editor_absoluteY="8dp">
 
         <!-- Prevents the edit text from having focus when the activity starts.
          android:focusableInTouchMode="true" on the parent layout. -->
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintRegisterLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
-            android:id="@+id/constraintRegisterLayout"
             tools:context="io.bluephoenix.imagewall.features.login.LoginActivity">
 
             <EditText
@@ -136,7 +136,7 @@
                 android:layout_height="@dimen/height_edit_box"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/edit_text_selector"
                 android:drawableLeft="@drawable/ic_person_grey_200_18dp"
                 android:drawablePadding="16dp"
@@ -155,40 +155,50 @@
                 app:layout_constraintTop_toBottomOf="@+id/dividerFirst"/>
 
             <EditText
-                android:id="@+id/editTextAge"
-                android:layout_width="@dimen/width_edit_box_age"
+                android:id="@+id/editTextWebsite"
+                android:layout_width="@dimen/width_edit_box"
                 android:layout_height="@dimen/height_edit_box"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/edit_text_selector"
-                android:drawableLeft="@drawable/ic_date_range_grey_200_18dp"
+                android:drawableLeft="@drawable/ic_web_asset_grey_200_18dp"
                 android:drawablePadding="16dp"
-                android:drawableStart="@drawable/ic_date_range_grey_200_18dp"
+                android:drawableStart="@drawable/ic_web_asset_grey_200_18dp"
                 android:ems="10"
-                android:hint="@string/edit_text_age_hint"
-                android:inputType="number"
+                android:hint="@string/edit_text_website_hint"
+                android:inputType="textUri"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:textColor="@color/editTextText"
                 android:textColorHint="@color/editTextHint"
                 android:textSize="14sp"
-                android:theme="@style/EditTextOverride"
-                app:layout_constraintStart_toStartOf="@+id/editTextName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtRegisterNameError"/>
+
+            <ImageView
+                android:id="@+id/spacer"
+                android:layout_width="6dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/content_description_login_space"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextWebsite"
+                app:layout_constraintStart_toEndOf="@+id/editTextWebsite"
+                app:layout_constraintTop_toTopOf="@+id/editTextWebsite"
+                custom:srcCompat="@color/white"/>
 
             <!-- The custom width attr in these views refers to the min width. The view
                  will not be less than 114 dp. -->
             <io.bluephoenix.imagewall.views.CustomBtn
                 android:id="@+id/registerBtn"
-                android:layout_width="@dimen/width_button"
+                android:layout_width="126dp"
                 android:layout_height="@dimen/height_button"
                 android:layout_marginBottom="24dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtRegisterAgeError"
+                app:layout_constraintEnd_toEndOf="@+id/spacer"
+                app:layout_constraintTop_toBottomOf="@+id/editTextWebsite"
                 custom:backgroundColor="@color/colorPrimary"
                 custom:height="@dimen/height_button"
                 custom:padding="6dp"
@@ -199,7 +209,7 @@
                 custom:text="@string/register_button"
                 custom:textColor="@color/white"
                 custom:textSize="11sp"
-                custom:width="@dimen/width_button"
+                custom:width="126dp"
                 tools:ignore="SmallSp">
             </io.bluephoenix.imagewall.views.CustomBtn>
 
@@ -209,7 +219,7 @@
                 android:layout_width="@dimen/width_edit_box_country"
                 android:layout_height="@dimen/height_edit_box"
                 android:layout_gravity="start"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/edit_text_selector"
                 android:drawableLeft="@drawable/ic_language_grey_200_18dp"
                 android:drawablePadding="16dp"
@@ -223,8 +233,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/editTextHint"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/editTextName"
-                app:layout_constraintTop_toBottomOf="@+id/txtRegisterNameError"/>
+                app:layout_constraintStart_toStartOf="@+id/editTextWebsite"
+                app:layout_constraintTop_toBottomOf="@+id/editTextWebsite"/>
 
             <TextView
                 android:id="@+id/txtRegisterEmailError"
@@ -267,21 +277,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextName"/>
-
-            <TextView
-                android:id="@+id/txtRegisterAgeError"
-                android:layout_width="@dimen/width_edit_box"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:textAlignment="textStart"
-                android:textColor="@color/error"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/countryBtn"
-                android:gravity="start"/>
 
             <TextView
                 android:id="@+id/txtRegisterPasswordRetypeError"

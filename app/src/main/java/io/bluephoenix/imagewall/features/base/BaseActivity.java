@@ -9,21 +9,24 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.Constructor;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import io.bluephoenix.imagewall.common.PresenterActivityDef;
-import io.bluephoenix.imagewall.common.PresenterActivityDef.PresenterActivityType;
-import io.bluephoenix.imagewall.data.repo.IRepository;
-import io.bluephoenix.imagewall.data.repo.Storage;
+import io.bluephoenix.imagewall.app.App;
+import io.bluephoenix.imagewall.core.common.PresenterActivityDef;
+import io.bluephoenix.imagewall.core.common.PresenterActivityDef.PresenterActivityType;
+import io.bluephoenix.imagewall.core.data.repo.IRepository;
+import io.bluephoenix.imagewall.core.data.repo.Preferences;
+import io.bluephoenix.imagewall.core.data.repo.Storage;
+import io.bluephoenix.imagewall.util.Util;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -33,6 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity
 {
     protected Unbinder unbinder;
     private BasePresenter presenter;
+    private Activity activity = this;
 
     /**
      * Set the default view for the activity and bind ButterKnife to the activity.
@@ -185,8 +189,7 @@ public abstract class BaseActivity extends AppCompatActivity
         {
             try
             {
-                //Get the correct presenter by its class name. Using newInstance
-                //instantiated dynamically.
+                //Get the correct presenter by its class name.
                 Class<?> genClass = Class.forName(classType.getName());
                 Object newPresenter;
 
@@ -195,29 +198,53 @@ public abstract class BaseActivity extends AppCompatActivity
                     case PresenterActivityDef.REGISTER:
 
                         Constructor<?> constructorRegister = genClass.getConstructor(
-                                FirebaseAuth.class, IRepository.Storage.class);
+                                FirebaseAuth.class,
+                                FirebaseDatabase.class,
+                                IRepository.Storage.class,
+                                IRepository.Preferences.class);
 
                         newPresenter = constructorRegister.newInstance(
-                                FirebaseAuth.getInstance(), FirebaseDatabase.getInstance(),
-                                new Storage(FirebaseDatabase.getInstance()));
+                                FirebaseAuth.getInstance(),
+                                FirebaseDatabase.getInstance(),
+                                new Storage(FirebaseDatabase.getInstance()),
+                                new Preferences(App.getPrefs()));
                         break;
 
                     case PresenterActivityDef.LOGIN:
 
                         Constructor<?> constructorLogin = genClass.getConstructor(
-                                FirebaseAuth.class);
-                        newPresenter = constructorLogin.newInstance(FirebaseAuth.getInstance());
-                        break;
+                                FirebaseAuth.class,
+                                FirebaseDatabase.class,
+                                IRepository.Preferences.class);
 
-                    case PresenterActivityDef.DETAIL:
+                        newPresenter = constructorLogin.newInstance(
+                                FirebaseAuth.getInstance(),
+                                FirebaseDatabase.getInstance(),
+                                new Preferences(App.getPrefs()));
+                        break;
 
                     case PresenterActivityDef.WALL:
 
                         Constructor<?> constructorWall = genClass.getConstructor(
                                 FirebaseAuth.class);
+
                         newPresenter = constructorWall.newInstance(FirebaseAuth.getInstance());
                         break;
 
+                    case PresenterActivityDef.EDIT_PROFILE:
+
+                        Constructor<?> constructorEditProfile = genClass.getConstructor(
+                                FirebaseAuth.class,
+                                DatabaseReference.class,
+                                IRepository.Preferences.class);
+
+                        newPresenter = constructorEditProfile.newInstance(
+                                FirebaseAuth.getInstance(),
+                                FirebaseDatabase.getInstance().getReference(),
+                                new Preferences(App.getPrefs()));
+                        break;
+
+                    case PresenterActivityDef.DETAIL:
                     case PresenterActivityDef.POST:
                     default: newPresenter = genClass.newInstance(); break;
                 }
@@ -256,7 +283,7 @@ public abstract class BaseActivity extends AppCompatActivity
             {
                 if(actionId == EditorInfo.IME_ACTION_DONE)
                 {
-                    hideKeyboard();
+                    Util.hideKeyboard(activity);
                     editText.setFocusable(false);
                     editText.setFocusableInTouchMode(true);
                     view.requestFocus();
@@ -267,20 +294,4 @@ public abstract class BaseActivity extends AppCompatActivity
         });
     }
 
-    /**
-     * Check if the keyboard is visible. If so, hide the keyboard.
-     */
-    protected void hideKeyboard()
-    {
-        InputMethodManager inputMethodManager = (InputMethodManager)
-                getSystemService(INPUT_METHOD_SERVICE);
-
-        //Verify if the soft keyboard is open and not null
-        if(inputMethodManager != null && inputMethodManager.isAcceptingText())
-        {
-            //noinspection ConstantConditions
-            inputMethodManager.hideSoftInputFromWindow(
-                    getCurrentFocus().getWindowToken(), 0);
-        }
-    }
 }

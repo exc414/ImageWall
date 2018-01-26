@@ -19,7 +19,7 @@ import io.bluephoenix.imagewall.R;
 import io.bluephoenix.imagewall.features.base.FragmentPresenters;
 import io.bluephoenix.imagewall.util.CardDecorator;
 
-import static io.bluephoenix.imagewall.common.PresenterFragmentDef.FEED;
+import static io.bluephoenix.imagewall.core.common.PresenterFragmentDef.FEED;
 
 /**
  * @author Carlos A. Perez Zubizarreta

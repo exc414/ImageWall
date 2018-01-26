@@ -1,7 +1,7 @@
 package io.bluephoenix.imagewall.features.register;
 
-import io.bluephoenix.imagewall.common.RegistrationFailureDef.RegistrationFailureType;
-import io.bluephoenix.imagewall.data.model.User;
+import io.bluephoenix.imagewall.core.common.RegistrationFailureDef.RegistrationFailureType;
+import io.bluephoenix.imagewall.core.data.model.User;
 
 /**
  * @author Carlos A. Perez Zubizarreta

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="io.bluephoenix.imagewall.features.wall.WallActivity">
+
+    <item
+        android:id="@+id/saveMenu"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_save_white_24dp"
+        android:title="@string/save_updated_profile_information"
+        app:showAsAction="always" />
+</menu>

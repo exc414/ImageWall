@@ -14,9 +14,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import io.bluephoenix.imagewall.common.RegistrationFailureDef;
-import io.bluephoenix.imagewall.data.model.User;
-import io.bluephoenix.imagewall.data.repo.IRepository;
+import io.bluephoenix.imagewall.core.common.RegistrationFailureDef;
+import io.bluephoenix.imagewall.core.data.model.User;
+import io.bluephoenix.imagewall.core.data.repo.IRepository;
 import io.bluephoenix.imagewall.features.base.BasePresenter;
 import io.bluephoenix.imagewall.util.Constant;
 import io.bluephoenix.imagewall.util.Util;
@@ -31,14 +31,16 @@ public class RegisterPresenter extends BasePresenter<IRegisterContract.PublishTo
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private IRepository.Storage storage;
+    private IRepository.Preferences preferences;
     private User user;
     private int errorMessage = RegistrationFailureDef.GENERAL_ERROR;
 
     public RegisterPresenter(FirebaseAuth firebaseAuth, FirebaseDatabase firebaseDatabase,
-                             IRepository.Storage storage)
+                             IRepository.Storage storage, IRepository.Preferences preferences)
     {
         this.firebaseAuth = firebaseAuth;
         this.firebaseDatabase = firebaseDatabase;
+        this.preferences = preferences;
         this.storage = storage;
     }
 
@@ -120,6 +122,7 @@ public class RegisterPresenter extends BasePresenter<IRegisterContract.PublishTo
                     //Store the user settings, remove the listener (important), then publish
                     //result to the view.
                     storage.createUserProfile(user);
+                    preferences.setProfileInformation(user);
                     firebaseAuth.removeAuthStateListener(authStateListener);
 
                     //Make sure the user gets sign out since they should not be able
